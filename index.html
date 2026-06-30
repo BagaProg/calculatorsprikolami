@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Baga's Calculator</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="sans-battle.css">
+</head>
+
+<body>
+	<div class="calculator-container" id="calculatorContainer">
+		<!-- Screen Display -->
+		<div class="calculator-section screen-section" id="screenSection">
+			<input type="text" class="display" id="display" value="0" readonly>
+			<img src="pasxalko.jpg" alt="ПАСХАЛКО" class="psxlko" hidden>
+		</div>
+
+		<!-- Operators Row -->
+		<div class="calculator-section operators-section" id="operatorsSection">
+			<button class="btn operator-btn" data-operator="/">÷</button>
+			<button class="btn operator-btn" data-operator="*">×</button>
+			<button class="btn operator-btn" data-operator="-">−</button>
+			<button class="btn operator-btn" data-operator="+">+</button>
+		</div>
+
+		<!-- Numbers Grid - organized into 4 sections -->
+		<div class="numbers-grid">
+			<!-- Top-left section (7,8,9) -->
+			<div class="calculator-section numbers-section" id="numbersTopLeft">
+				<button class="btn number-btn" data-number="7">7</button>
+				<button class="btn number-btn" data-number="8">8</button>
+				<button class="btn number-btn" data-number="9">9</button>
+			</div>
+
+			<!-- Top-right section (4,5,6) -->
+			<div class="calculator-section numbers-section" id="numbersTopRight">
+				<button class="btn number-btn" data-number="4">4</button>
+				<button class="btn number-btn" data-number="5">5</button>
+				<button class="btn number-btn" data-number="6">6</button>
+			</div>
+
+			<!-- Bottom-left section (1,2,3) -->
+			<div class="calculator-section numbers-section" id="numbersBottomLeft">
+				<button class="btn number-btn" data-number="1">1</button>
+				<button class="btn number-btn" data-number="2">2</button>
+				<button class="btn number-btn" data-number="3">3</button>
+			</div>
+
+			<!-- Bottom-right section (0,.,=) -->
+			<div class="calculator-section numbers-section" id="numbersBottomRight">
+				<button class="btn number-btn zero-btn" data-number="0">0</button>
+				<button class="btn number-btn" data-number=".">.</button>
+			</div>
+		</div>
+
+		<!-- Control section -->
+		<div class="calculator-section control-section" id="controlSection">
+			<button class="btn clear-btn" id="clearBtn">C</button>
+			<button class="btn clear-btn" id="deleteBtn">⌫</button>
+			<button class="btn equals-btn" id="equalsBtn">=</button>
+		</div>
+	</div>
+
+	<div class="subscription-overlay" id="subscriptionOverlay" aria-hidden="true">
+		<div class="subscription-sheet" id="subscriptionSheet" role="dialog" aria-modal="true"
+			aria-labelledby="subscriptionTitle">
+			<div class="subscription-icon">✦</div>
+			<h2 id="subscriptionTitle">Baga Calculator Premium™</h2>
+			<p class="subscription-subtitle">You reached free plan limit.</p>
+			<p class="subscription-description">Only 5 calculations allowed.<br>Upgrade now.</p>
+			<div class="subscription-price">$3.99/month</div>
+			<div class="subscription-actions">
+				<button class="subscription-btn primary" id="subscribeBtn">Subscribe</button>
+				<button class="subscription-btn secondary" id="laterBtn">Maybe Later</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Crack overlay (hidden by default) -->
+	<canvas id="crackCanvas" class="crack-canvas"></canvas>
+
+	<!-- Physics container for fallen fragments -->
+	<div id="physicsContainer" class="physics-container"></div>
+
+	<!-- Sans Battle -->
+	<div id="sans-battle-screen">
+		<div class="sans-sprite-section">
+			<img class="sans-sprite" src="assets/sans.png" alt="Sans">
+		</div>
+
+		<div class="battle-box-wrap">
+			<img class="intro-heart" id="sansIntroHeart" src="assets/heart.png" alt="" width="32" height="32">
+			<div class="battle-box" id="sansBattleBox">
+				<canvas id="sansBattleCanvas" width="250" height="160"></canvas>
+				<div class="battle-timer" id="sansBattleTimer">20</div>
+				<div class="battle-message" id="sansBattleMessage"></div>
+			</div>
+		</div>
+
+		<div class="sans-hud">
+			<div class="stats-row">
+				<span class="hud-lv">LV 69</span>
+				<span class="hp-label">HP</span>
+				<div class="hp-bar">
+					<div class="hp-fill" id="sansBattleHp"></div>
+				</div>
+				<span class="hud-kr">KR <span id="sansBattleKr">20</span> / 20</span>
+			</div>
+			<div class="hud-buttons">
+				<button type="button" class="battle-btn btn-fight"><img src="assets/fight.png" alt="FIGHT"></button>
+				<button type="button" class="battle-btn btn-act"><img src="assets/act.png" alt="ACT"></button>
+				<button type="button" class="battle-btn btn-item"><img src="assets/item.png" alt="ITEM"></button>
+				<button type="button" class="battle-btn btn-mercy"><img src="assets/mercy.png" alt="MERCY"></button>
+			</div>
+		</div>
+
+		<audio id="sansBattleMusic" src="assets/megalovania.mp3" loop preload="auto"></audio>
+	</div>
+
+	<script src="sans-battle.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
